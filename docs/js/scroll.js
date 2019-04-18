@@ -1,6 +1,8 @@
 
       
 $(function(){
+    
+    //color of index
     var color = {
         onCulture: "#B82601",
         onKnowledge: "#82276F",
@@ -10,7 +12,7 @@ $(function(){
         none: "#414a4c"
     }
       
-      
+    //load conversation titles  
     var titles= ["Whatdoyouthinkofthesingularity", 
                 "Whatdoyoudreamabout", 
                 "Niceweatherwerehaving", 
@@ -27,6 +29,7 @@ $(function(){
                 "Imabitanxious", 
                 "Impushingofftheinevitable"]
     
+    //find out which page you are on to load relevant conversation data
     var current = $(location).attr("href")
     var num;
     current = current.substring(current.lastIndexOf("/")+1, current.indexOf(".html"))
@@ -65,7 +68,7 @@ $(function(){
         })
         
   
-        
+        //bind formatting codes to conversation 
         Object.keys(convo).forEach(function(val, key) {
             
             
@@ -97,7 +100,7 @@ $(function(){
         })       
         
        
-       
+        //scroller function to showcase relevant data to the peice of the conversation
         $(function(){
             
             $("#container").scrollStory({
@@ -158,7 +161,7 @@ $(function(){
                 return string.charAt(0).toUpperCase() + string.slice(1);
             }
         
-        
+        //add page info
         $('#subtitle').append('<div id="convo-title">'+ ourData.title + '</div>')
        
         $('#subtitle').append('<div id="convo-participants">'+ cap(ourData.user) + ' ... '+ cap(ourData.user2) + '</div>')
@@ -168,7 +171,7 @@ $(function(){
         
         $('.end').append('<div class="summary"> </div>')
     
-         
+         //add barchart at bottom
         var div = d3.select("body").append("div")	
             .attr("class", "tooltip")				
             .style("opacity", 0);
